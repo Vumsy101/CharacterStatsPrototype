@@ -13,10 +13,16 @@ public class Player : MonoBehaviour
 
     public GameObject sword;
 
+    public float maxHealth;
+    public float currentHealth;
     public float speed;
+    public float attackspeed;
     public float rotationSpeed = 5f;
     public float xInput;
     public float yInput;
+
+    public HealthSystem HealthSystem;
+    public Healthbar healthbar;
 
     public bool attack;
     public bool canMove = true;
@@ -29,22 +35,39 @@ public class Player : MonoBehaviour
         PlayerStats playerstats = GetComponent<PlayerStats>();
 
         rb = GetComponent<Rigidbody2D>();
+        UpdateStats();
     }
 
     void Update()
     {
         CheckInput();
         ApplyRotation();
+        currentHealth = HealthSystem.GetHealth();
+        healthbar.SetHealth(currentHealth);
 
 
         if (canMove == false)
         {
             Invoke("MovementLock", 0.2f);
         }
+        if (currentHealth <= 0)
+        {
+            RestartScene();
+        }
     }
     private void FixedUpdate()
     {
         ApplyMovement();
+    }
+
+    public void UpdateStats()
+    {
+        PlayerStats playerstats = GetComponent<PlayerStats>();
+        speed = 5;
+        attackspeed = 0.2f;
+        HealthSystem = new HealthSystem(playerstats.Health.Value);
+        maxHealth = HealthSystem.GetHealth();
+        healthbar.SetMaxHealth(maxHealth);
     }
 
     void CheckInput()
@@ -123,6 +146,11 @@ public class Player : MonoBehaviour
     void AttackLock()
     {
         canAttack = true;
+    }
+    public void RestartScene()
+    {
+        Scene thisScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(thisScene.name);
     }
     public void QuitGame()
     {
