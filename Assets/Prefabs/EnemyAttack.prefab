@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 1986842023111703633}
   - component: {fileID: 1986842023111703634}
   - component: {fileID: 1986842023111703635}
-  - component: {fileID: 2352046364387592136}
+  - component: {fileID: -3903291858114140652}
   m_Layer: 0
-  m_Name: PlayerAttack
-  m_TagString: Sword
+  m_Name: EnemyAttack
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1986842023111703662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.48, y: -1.69, z: -0.4}
-  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -136,7 +136,7 @@ PolygonCollider2D:
       - {x: 0.055136275, y: 0}
       - {x: 0.13486372, y: 0.10513502}
       - {x: 0.050558984, y: 0.14324324}
---- !u!114 &2352046364387592136
+--- !u!114 &-3903291858114140652
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,8 +145,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1986842023111703662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05fc76ee7873d0d4dba41adf67c095d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 12f511846568c124489d2c9aa65ccd7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1665562176945504413, guid: 02c39016bbff67a46a3e8d87e29468fd, type: 3}
+  damage: 0
+  player: {fileID: 0}
   Enemy: {fileID: 0}
